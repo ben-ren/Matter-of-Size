@@ -37,7 +37,6 @@ public partial class Rescaler : RigidBody2D
 		if(child.Scale == targetScale || child.Scale == originalScale){
 			rescaling = false;
 		}
-		GD.Print(rescaling);
 	}
 
 	//detects collisions
@@ -62,14 +61,5 @@ public partial class Rescaler : RigidBody2D
 			character.Velocity += forceDirection;
 		}
         
-	}
-
-	void AddForceOld(Node2D other){
-        if (other is not RigidBody2D rb2d)
-        {
-            return;
-        }
-        Vector2 direction = other.Position - this.Position;
-		rb2d.ApplyCentralImpulse(direction * impulsePower);
 	}
 }
