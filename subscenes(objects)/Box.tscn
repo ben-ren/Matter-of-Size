@@ -5,15 +5,18 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1jwus"]
 
-[node name="Box (Rigidbody2D)" type="RigidBody2D"]
+[node name="Box (Rigidbody2D)" type="RigidBody2D" groups=["PhysicsObject", "Resizeable"]]
 collision_layer = 2
 collision_mask = 7
 mass = 0.5
+max_contacts_reported = 20
+contact_monitor = true
 can_sleep = false
 script = ExtResource("1_or6sq")
 originalScale = Vector2(4, 4)
 newScale = Vector2(6, 6)
 step = 3.0
+impulsePower = 3.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_1jwus")
@@ -21,3 +24,5 @@ shape = SubResource("RectangleShape2D_1jwus")
 [node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_2b3yc")
+
+[connection signal="body_entered" from="." to="." method="OnCollisionEnter"]

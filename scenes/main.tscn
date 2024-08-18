@@ -110,3 +110,12 @@ position = Vector2(576, 325)
 
 [node name="Box (Rigidbody2D)" parent="." instance=ExtResource("2_7vth3")]
 position = Vector2(256, 537)
+impulsePower = 10.0
+
+[node name="Box (Rigidbody2D)2" parent="." instance=ExtResource("2_7vth3")]
+position = Vector2(528, 531)
+impulsePower = 10.0
+
+[node name="Box (Rigidbody2D)3" parent="." instance=ExtResource("2_7vth3")]
+position = Vector2(592, 529)
+originalScale = Vector2(2, 2)
