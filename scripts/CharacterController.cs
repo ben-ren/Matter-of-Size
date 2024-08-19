@@ -7,7 +7,6 @@ public partial class CharacterController : CharacterBody2D
 	[Export] public float Speed = 300.0f;
 	[Export] public float JumpVelocity = -400.0f;
 	private RayCast2D ray;
-	private bool shoot;
 
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
 	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
@@ -19,8 +18,7 @@ public partial class CharacterController : CharacterBody2D
 
     public override void _PhysicsProcess(double delta)
 	{
-		SetShootState(Input.IsActionJustPressed("left_click"));
-		_UpdateRaycastTarget();
+		UpdateRaycastTarget();
 		Vector2 velocity = Velocity;
 
 		// Add the gravity.
@@ -45,22 +43,26 @@ public partial class CharacterController : CharacterBody2D
 
 		Velocity = velocity;
 		MoveAndSlide();
+		ShrinkRay();
+		QueueRedraw();
 	}
 
-	public void SetShootState(bool state){
-		//if Input.IsActionJustPressed("left_click")
-		//AND ray.isColliding
-		//AND other.isInGroup("Resizeable")
-		//THEN set shoot to true
-		shoot = state;
+	public void ShrinkRay(){
+		if(Input.IsActionJustPressed("left_click") && ray.IsColliding()){
+			GodotObject collidedObject = ray.GetCollider();
+			if(collidedObject is Rescaler rescaler){
+				rescaler.TriggerRescale();
+			}
+		}
 	}
 
-	public bool GetShootState(){
-		return shoot;
+	public void UpdateRaycastTarget(){
+		Vector2 mousePos = GetGlobalMousePosition();
+		ray.TargetPosition = (mousePos - GlobalPosition)/2;
 	}
 
-	public void _UpdateRaycastTarget(){
-		Vector2 mousePos = GetViewport().GetMousePosition();
-		ray.TargetPosition = mousePos;
+	public override void _Draw()
+	{
+		DrawLine(ray.Position, ray.TargetPosition, new Color(1, 0, 0), 2); // Red line with width of 2
 	}
 }

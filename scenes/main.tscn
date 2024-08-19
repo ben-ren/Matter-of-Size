@@ -106,6 +106,7 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("3_bf1n7")
 
 [node name="RayCast2D" type="RayCast2D" parent="CharacterBody2D"]
+collision_mask = 3
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 325)

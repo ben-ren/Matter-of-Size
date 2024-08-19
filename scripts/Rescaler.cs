@@ -19,9 +19,7 @@ public partial class Rescaler : RigidBody2D
     public override void _PhysicsProcess(double delta)
     {
 		if(Input.IsActionJustPressed("shoot")){
-			changeScale = !changeScale;
-			t = 1-t;
-			rescaling = true;
+			TriggerRescale();
 		}
         Resize(newScale, delta);
     }
@@ -39,11 +37,10 @@ public partial class Rescaler : RigidBody2D
 		}
 	}
 
-	//detects collisions
-	void OnCollisionEnter(Node2D other){
-		if(rescaling){
-			AddForce(other);
-		}
+	public void TriggerRescale(){
+		changeScale = !changeScale;
+		t = 1-t;
+		rescaling = true;
 	}
 
 	void AddForce(Node2D other){
@@ -59,7 +56,13 @@ public partial class Rescaler : RigidBody2D
 			Vector2 forceDirection = direction.Normalized() * impulsePower * 100f;
 			// Apply the combined force to the CharacterBody2D
 			character.Velocity += forceDirection;
+		}   
+	}
+
+	//detects collisions
+	void OnCollisionEnter(Node2D other){
+		if(rescaling){
+			AddForce(other);
 		}
-        
 	}
 }
