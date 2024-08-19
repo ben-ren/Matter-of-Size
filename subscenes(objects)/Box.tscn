@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://8tqy0ow0qs8k"]
 
-[ext_resource type="Texture2D" uid="uid://bvc6px1y0p7es" path="res://sprites/greybox_sprites/square.png" id="1_2b3yc"]
 [ext_resource type="Script" path="res://scripts/Rescaler.cs" id="1_or6sq"]
+[ext_resource type="Texture2D" uid="uid://cu3h5aw5swjrf" path="res://sprites/ColourBox.png" id="2_88h0a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1jwus"]
 
 [node name="Box (Rigidbody2D)" type="RigidBody2D" groups=["PhysicsObject", "Resizeable"]]
 collision_layer = 2
-collision_mask = 7
+collision_mask = 143
 mass = 0.5
 max_contacts_reported = 20
 contact_monitor = true
@@ -22,7 +22,7 @@ impulsePower = 3.0
 shape = SubResource("RectangleShape2D_1jwus")
 
 [node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_2b3yc")
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_88h0a")
 
 [connection signal="body_entered" from="." to="." method="OnCollisionEnter"]

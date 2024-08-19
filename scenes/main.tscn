@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b017idj3yg2w0" path="res://sprites/greybox_sprites/pill.png" id="3_bf1n7"]
 [ext_resource type="Script" path="res://scripts/CharacterController.cs" id="3_dajpb"]
 [ext_resource type="Script" path="res://scripts/CameraController.cs" id="4_qms3s"]
-[ext_resource type="PackedScene" uid="uid://44vghsb2r4hm" path="res://subscenes(objects)/rocket.tscn" id="6_mpxt8"]
+[ext_resource type="PackedScene" uid="uid://6kow8q6nbri5" path="res://subscenes(objects)/cannon.tscn" id="6_keqvr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gakd1"]
 texture = ExtResource("1_yfqsi")
@@ -96,7 +96,7 @@ layer_0/tile_data = PackedInt32Array(786432, 65536, 0, 786433, 65536, 0, 786434,
 position = Vector2(140, 408)
 scale = Vector2(2, 2)
 collision_layer = 4
-collision_mask = 3
+collision_mask = 143
 script = ExtResource("3_dajpb")
 JumpVelocity = -600.0
 
@@ -108,7 +108,7 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("3_bf1n7")
 
 [node name="RayCast2D" type="RayCast2D" parent="CharacterBody2D"]
-collision_mask = 3
+collision_mask = 139
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("focusTarget")]
 position = Vector2(576, 325)
@@ -130,4 +130,7 @@ impulsePower = 10.0
 position = Vector2(592, 529)
 originalScale = Vector2(2, 2)
 
-[node name="Rocket(RigidBody2D)" parent="." instance=ExtResource("6_mpxt8")]
+[node name="Cannon(RigidBody2D)" parent="." instance=ExtResource("6_keqvr")]
+position = Vector2(393, 392)
+originalScale = Vector2(3, 3)
+newScale = Vector2(5, 5)

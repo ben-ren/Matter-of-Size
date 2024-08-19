@@ -4,7 +4,7 @@ using System;
 public partial class Rocket : Rescaler
 {
 	[Export] float speed;
-	Vector2 direction = Vector2.Left;
+	Vector2 direction = Vector2.Right;
 	public override void _Ready()
 	{
 		base._Ready();	//inherit's Rescaler Setup

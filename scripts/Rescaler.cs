@@ -59,6 +59,11 @@ public partial class Rescaler : RigidBody2D
 		}   
 	}
 
+	public void SetScales(Vector2 originalScale, Vector2 newScale){
+		this.originalScale = originalScale;
+		this.newScale = newScale;
+	}
+
 	//detects collisions
 	public void OnCollisionEnter(Node2D other){
 		if(rescaling){

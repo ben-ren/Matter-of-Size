@@ -32,9 +32,8 @@ _data = {
 }
 
 [node name="Rocket(RigidBody2D)" type="RigidBody2D" groups=["PhysicsObject", "Resizeable"]]
-position = Vector2(880, 531)
 scale = Vector2(-1, 1)
-collision_layer = 2
+collision_layer = 128
 collision_mask = 7
 gravity_scale = 0.0
 max_contacts_reported = 10
@@ -44,7 +43,8 @@ freeze_mode = 1
 script = ExtResource("1_lgosm")
 speed = 100.0
 originalScale = Vector2(1, 1)
-newScale = Vector2(4, 4)
+newScale = Vector2(1, 1)
+step = 2.0
 impulsePower = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -52,7 +52,7 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_qry4r")
 
 [node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
-rotation = -1.5708
+rotation = 1.5708
 texture = ExtResource("2_5taxy")
 hframes = 3
 script = ExtResource("3_hh6up")

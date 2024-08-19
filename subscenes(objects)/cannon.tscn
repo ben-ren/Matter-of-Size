@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=3 uid="uid://6kow8q6nbri5"]
+
+[ext_resource type="Script" path="res://scripts/Cannon.cs" id="1_20ywb"]
+[ext_resource type="Texture2D" uid="uid://cur3mq62rd6et" path="res://sprites/CannonTube_spritesheet.png" id="2_rrpge"]
+[ext_resource type="Script" path="res://scripts/CannonAnimator.cs" id="3_126qa"]
+[ext_resource type="Texture2D" uid="uid://eq1yyec3d8w5" path="res://sprites/CannonStand.png" id="4_tglkr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s45vg"]
+
+[sub_resource type="Animation" id="Animation_8xqse"]
+resource_name = "shoot"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.7, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xb13t"]
+_data = {
+"shoot": SubResource("Animation_8xqse")
+}
+
+[node name="Cannon(RigidBody2D)" type="RigidBody2D" groups=["PhysicsObject", "Resizeable"]]
+collision_layer = 8
+collision_mask = 15
+lock_rotation = true
+script = ExtResource("1_20ywb")
+originalScale = Vector2(2, 2)
+newScale = Vector2(4, 4)
+step = 2.0
+impulsePower = 10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_s45vg")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+modulate = Color(0.537255, 0.537255, 0.537255, 1)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_rrpge")
+hframes = 3
+script = ExtResource("3_126qa")
+
+[node name="CannonAnimationPlayer" type="AnimationPlayer" parent="CollisionShape2D/Sprite2D"]
+speed_scale = 2.0
+libraries = {
+"": SubResource("AnimationLibrary_xb13t")
+}
+
+[node name="Timer" type="Timer" parent="CollisionShape2D/Sprite2D"]
+process_callback = 0
+wait_time = 5.0
+autostart = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="CollisionShape2D"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_tglkr")
+
+[connection signal="body_entered" from="." to="." method="OnCollisionEnter"]
