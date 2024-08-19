@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cc68hsum4pygv"]
+[gd_scene load_steps=9 format=3 uid="uid://cc68hsum4pygv"]
 
 [ext_resource type="Texture2D" uid="uid://bvc6px1y0p7es" path="res://sprites/greybox_sprites/square.png" id="1_yfqsi"]
 [ext_resource type="PackedScene" uid="uid://8tqy0ow0qs8k" path="res://subscenes(objects)/Box.tscn" id="2_7vth3"]
 [ext_resource type="Texture2D" uid="uid://b017idj3yg2w0" path="res://sprites/greybox_sprites/pill.png" id="3_bf1n7"]
 [ext_resource type="Script" path="res://scripts/CharacterController.cs" id="3_dajpb"]
+[ext_resource type="Script" path="res://scripts/CameraController.cs" id="4_qms3s"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gakd1"]
 texture = ExtResource("1_yfqsi")
@@ -108,8 +109,13 @@ texture = ExtResource("3_bf1n7")
 [node name="RayCast2D" type="RayCast2D" parent="CharacterBody2D"]
 collision_mask = 3
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("focusTarget")]
 position = Vector2(576, 325)
+script = ExtResource("4_qms3s")
+focusTarget = NodePath("../CharacterBody2D")
+X_Min = 100.0
+X_Max = 2000.0
+Y_Min = 300.0
 
 [node name="Box (Rigidbody2D)" parent="." instance=ExtResource("2_7vth3")]
 position = Vector2(256, 537)
