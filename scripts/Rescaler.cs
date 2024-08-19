@@ -60,7 +60,7 @@ public partial class Rescaler : RigidBody2D
 	}
 
 	//detects collisions
-	void OnCollisionEnter(Node2D other){
+	public void OnCollisionEnter(Node2D other){
 		if(rescaling){
 			AddForce(other);
 		}

@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://44vghsb2r4hm"]
+
+[ext_resource type="Script" path="res://scripts/Rocket.cs" id="1_lgosm"]
+[ext_resource type="Texture2D" uid="uid://dboep8suea21a" path="res://sprites/rocket.png" id="2_5taxy"]
+[ext_resource type="Script" path="res://scripts/AnimationController.cs" id="3_hh6up"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qry4r"]
+radius = 7.0
+height = 50.0
+
+[sub_resource type="Animation" id="Animation_dm0sl"]
+resource_name = "spin"
+length = 0.5
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lhy0e"]
+_data = {
+"spin": SubResource("Animation_dm0sl")
+}
+
+[node name="Rocket(RigidBody2D)" type="RigidBody2D" groups=["PhysicsObject", "Resizeable"]]
+position = Vector2(880, 531)
+scale = Vector2(-1, 1)
+collision_layer = 2
+collision_mask = 7
+gravity_scale = 0.0
+max_contacts_reported = 10
+contact_monitor = true
+can_sleep = false
+freeze_mode = 1
+script = ExtResource("1_lgosm")
+speed = 100.0
+originalScale = Vector2(1, 1)
+newScale = Vector2(4, 4)
+impulsePower = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_qry4r")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+rotation = -1.5708
+texture = ExtResource("2_5taxy")
+hframes = 3
+script = ExtResource("3_hh6up")
+
+[node name="RocketAnimation" type="AnimationPlayer" parent="CollisionShape2D/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_lhy0e")
+}
+
+[connection signal="body_entered" from="." to="." method="OnCollisionEnter"]
