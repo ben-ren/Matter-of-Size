@@ -6,6 +6,7 @@ public partial class CharacterController : CharacterBody2D
 {
 	[Export] public float Speed = 300.0f;
 	[Export] public float JumpVelocity = -400.0f;
+	[Export] public Node2D spawnPoint;
 	private RayCast2D ray;
 
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -14,11 +15,22 @@ public partial class CharacterController : CharacterBody2D
     public override void _Ready()
     {
         ray = GetNode<RayCast2D>("RayCast2D");
+		FallPitReset();
     }
 
     public override void _PhysicsProcess(double delta)
 	{
 		UpdateRaycastTarget();
+		PlayerMovement(delta);
+		if(Position.Y >= 1000){
+			FallPitReset();
+		}
+		MoveAndSlide();
+		ShrinkRay();
+		QueueRedraw();
+	}
+
+	private void PlayerMovement(double delta){
 		Vector2 velocity = Velocity;
 
 		// Add the gravity.
@@ -42,9 +54,6 @@ public partial class CharacterController : CharacterBody2D
 		}
 
 		Velocity = velocity;
-		MoveAndSlide();
-		ShrinkRay();
-		QueueRedraw();
 	}
 
 	public void ShrinkRay(){
@@ -54,6 +63,10 @@ public partial class CharacterController : CharacterBody2D
 				rescaler.TriggerRescale();
 			}
 		}
+	}
+
+	void FallPitReset(){
+		this.Position = spawnPoint.Position;
 	}
 
 	public void UpdateRaycastTarget(){
