@@ -13,7 +13,7 @@ config_version=5
 config/name="Matter of Size"
 run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.1", "C#", "Mobile")
-config/icon="res://icon.svg"
+config/icon="res://sprites/ColourBox.png"
 
 [autoload]
 
