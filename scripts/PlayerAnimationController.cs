@@ -13,7 +13,6 @@ public partial class PlayerAnimationController : Sprite2D
 
 	public override void _Process(double delta)
 	{
-		GD.Print(parent.GetAnimationState());
 		RunAnimation(parent.GetAnimationState());
 		FlipStateCheck();
 	}

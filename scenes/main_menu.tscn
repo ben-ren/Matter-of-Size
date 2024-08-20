@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3 uid="uid://hi4kpj0luc3j"]
+
+[ext_resource type="Script" path="res://scripts/MainMenu.cs" id="1_deyrw"]
+[ext_resource type="PackedScene" uid="uid://bnc34kag5fopt" path="res://scenes/options_menu.tscn" id="2_42y6w"]
+
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("options", "credits")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_deyrw")
+options = NodePath("OptionsMenu")
+credits = NodePath("RichTextLabel")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Start Game"
+
+[node name="Options" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Options"
+
+[node name="Credits" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Credits"
+
+[node name="Exit Game" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Exit
+"
+
+[node name="OptionsMenu" parent="." instance=ExtResource("2_42y6w")]
+offset_left = 153.0
+offset_top = 49.0
+offset_right = 193.0
+offset_bottom = 89.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 361.0
+offset_top = 12.0
+offset_right = 401.0
+offset_bottom = 52.0
+theme_override_font_sizes/normal_font_size = 20
+text = "- Text test continuing
+- other test"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Exit Game" to="." method="_on_exit_game_pressed"]
