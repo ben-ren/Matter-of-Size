@@ -20,6 +20,7 @@ public partial class CameraController : Camera2D
 	}
 
 	void defineBoundaries(){
+		GetScreenCenterPosition();
 		float Xbound = Mathf.Clamp(focusTarget.Position.X, X_Min, X_Max);
 		float Ybound = Mathf.Clamp(focusTarget.Position.Y, Y_Max, Y_Min);
 		this.Position = new Vector2(Xbound, Ybound);

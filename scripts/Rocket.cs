@@ -27,4 +27,12 @@ public partial class Rocket : Rescaler
 	void MoveRocket(float delta){
 		ApplyCentralForce(direction * speed * delta * 100);
 	}
+
+	public void SetDirection(Vector2 direction){
+		this.direction = direction;
+	}
+
+	public Vector2 GetDirection(){
+		return direction;
+	}
 }
