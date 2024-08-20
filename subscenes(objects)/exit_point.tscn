@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://hx3owedngy2"]
+
+[ext_resource type="Script" path="res://scripts/ExitPoint.cs" id="1_egkml"]
+[ext_resource type="Texture2D" uid="uid://eq1yyec3d8w5" path="res://sprites/CannonStand.png" id="2_wejjx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wyx3o"]
+
+[node name="ExitPoint(Area2D)" type="Area2D" node_paths=PackedStringArray("spawnPoint")]
+collision_layer = 16
+collision_mask = 4
+script = ExtResource("1_egkml")
+spawnPoint = NodePath("")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wyx3o")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+modulate = Color(0, 0, 0, 1)
+texture = ExtResource("2_wejjx")
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]

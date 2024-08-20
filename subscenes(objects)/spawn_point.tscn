@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1cteoq8vilv8"]
+
+[ext_resource type="Texture2D" uid="uid://eq1yyec3d8w5" path="res://sprites/CannonStand.png" id="1_d1geq"]
+
+[node name="SpawnPoint" type="Sprite2D"]
+modulate = Color(0, 0, 0, 1)
+texture = ExtResource("1_d1geq")
