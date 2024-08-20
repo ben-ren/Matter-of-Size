@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cc68hsum4pygv"]
+[gd_scene load_steps=13 format=3 uid="uid://cc68hsum4pygv"]
 
 [ext_resource type="Texture2D" uid="uid://bvc6px1y0p7es" path="res://sprites/greybox_sprites/square.png" id="1_yfqsi"]
 [ext_resource type="PackedScene" uid="uid://8tqy0ow0qs8k" path="res://subscenes(objects)/Box.tscn" id="2_7vth3"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://6kow8q6nbri5" path="res://subscenes(objects)/cannon.tscn" id="6_keqvr"]
 [ext_resource type="PackedScene" uid="uid://b1cteoq8vilv8" path="res://subscenes(objects)/spawn_point.tscn" id="7_rwhf7"]
 [ext_resource type="PackedScene" uid="uid://hx3owedngy2" path="res://subscenes(objects)/exit_point.tscn" id="8_1ykbw"]
+[ext_resource type="PackedScene" uid="uid://cv34ohgy6cufu" path="res://subscenes(objects)/user_interface.tscn" id="9_5u342"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gakd1"]
 texture = ExtResource("1_yfqsi")
@@ -401,6 +402,13 @@ spawnPoint = NodePath("../SpawnPoint")
 
 [node name="Camera2D" parent="." node_paths=PackedStringArray("focusTarget") instance=ExtResource("4_dxll5")]
 focusTarget = NodePath("../CharacterBody2D")
+
+[node name="UserInterface" parent="Camera2D" node_paths=PackedStringArray("exit") instance=ExtResource("9_5u342")]
+offset_left = -576.0
+offset_top = -325.0
+offset_right = -536.0
+offset_bottom = -285.0
+exit = NodePath("../../ExitPoint(Area2D)")
 
 [node name="Box (Rigidbody2D)" parent="." instance=ExtResource("2_7vth3")]
 position = Vector2(256, 537)
