@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://d1h3ctw8pkwhh"]
+[gd_scene load_steps=12 format=3 uid="uid://d1h3ctw8pkwhh"]
 
 [ext_resource type="Texture2D" uid="uid://bvc6px1y0p7es" path="res://sprites/greybox_sprites/square.png" id="1_yfqsi"]
 [ext_resource type="Texture2D" uid="uid://bdruv6jkxq0vk" path="res://sprites/tilemap_spritesheet.png" id="2_88072"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bf46giqtc6rya" path="res://subscenes(objects)/player.tscn" id="5_5nwe3"]
 [ext_resource type="PackedScene" uid="uid://b1cteoq8vilv8" path="res://subscenes(objects)/spawn_point.tscn" id="6_wph53"]
 [ext_resource type="PackedScene" uid="uid://hx3owedngy2" path="res://subscenes(objects)/exit_point.tscn" id="7_0gbav"]
+[ext_resource type="PackedScene" uid="uid://6kow8q6nbri5" path="res://subscenes(objects)/cannon.tscn" id="8_adpck"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gakd1"]
 texture = ExtResource("1_yfqsi")
@@ -415,3 +416,6 @@ position = Vector2(3, 550)
 [node name="ExitPoint(Area2D)" parent="." node_paths=PackedStringArray("spawnPoint") instance=ExtResource("7_0gbav")]
 position = Vector2(816, 551)
 spawnPoint = NodePath("../SpawnPoint")
+
+[node name="Cannon(RigidBody2D)" parent="." instance=ExtResource("8_adpck")]
+position = Vector2(398, 406)

@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bf46giqtc6rya"]
+[gd_scene load_steps=11 format=3 uid="uid://bf46giqtc6rya"]
 
 [ext_resource type="Script" path="res://scripts/CharacterController.cs" id="1_k2s8h"]
 [ext_resource type="Texture2D" uid="uid://xi872dnyhn4r" path="res://sprites/Anzu_SpriteSheet.png" id="2_2bkh1"]
 [ext_resource type="Script" path="res://scripts/PlayerAnimationController.cs" id="3_jseup"]
+[ext_resource type="AudioStream" uid="uid://r5qvsl8eebfi" path="res://audio/jump.wav" id="4_txpew"]
+[ext_resource type="AudioStream" uid="uid://r38ltd1p2jgv" path="res://audio/Shrink.wav" id="5_23vbk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_76map"]
 height = 39.0
@@ -89,3 +91,11 @@ libraries = {
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 collision_mask = 139
+
+[node name="JumpSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_txpew")
+volume_db = -10.0
+
+[node name="ShrinkRaySFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_23vbk")
+volume_db = -10.0

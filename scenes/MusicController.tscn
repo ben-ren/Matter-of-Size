@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cg2xf2e7q60ay"]
+
+[ext_resource type="Script" path="res://scripts/MusicController.cs" id="1_gewd8"]
+[ext_resource type="AudioStream" uid="uid://cmg2vm2plwov2" path="res://audio/Blippy Trance.mp3" id="1_l31ti"]
+
+[node name="MusicController" type="Node"]
+script = ExtResource("1_gewd8")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_l31ti")
+volume_db = -30.0
+
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

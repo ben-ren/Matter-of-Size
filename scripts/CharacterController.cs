@@ -6,6 +6,8 @@ public partial class CharacterController : CharacterBody2D
 	[Export] public float Speed = 300.0f;
 	[Export] public float JumpVelocity = -400.0f;
 	[Export] public Node2D spawnPoint;
+	AudioStreamPlayer jumpSFX;
+	AudioStreamPlayer shrinkRaySFX;
 	private Vector2 direction;
 	private RayCast2D ray;
 	private int animationState;
@@ -16,6 +18,8 @@ public partial class CharacterController : CharacterBody2D
     public override void _Ready()
     {
         ray = GetNode<RayCast2D>("RayCast2D");
+		jumpSFX = GetNode<AudioStreamPlayer>("JumpSFX");
+		shrinkRaySFX = GetNode<AudioStreamPlayer>("ShrinkRaySFX");
 		FallPitReset();
     }
 
@@ -35,12 +39,15 @@ public partial class CharacterController : CharacterBody2D
 		Vector2 velocity = Velocity;
 
 		// Add the gravity.
-		if (!IsOnFloor())
+		if (!IsOnFloor()){
 			velocity.Y += gravity * (float)delta;
+		}
 
 		// Handle Jump.
-		if (Input.IsActionJustPressed("jump") && IsOnFloor())
+		if (Input.IsActionJustPressed("jump") && IsOnFloor()){
+			jumpSFX.Playing = true;
 			velocity.Y = JumpVelocity;
+		}
 
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.
@@ -62,6 +69,7 @@ public partial class CharacterController : CharacterBody2D
 		if(Input.IsActionJustPressed("left_click") && ray.IsColliding()){
 			GodotObject collidedObject = ray.GetCollider();
 			if(collidedObject is Rescaler rescaler){
+				shrinkRaySFX.Playing = true;
 				rescaler.TriggerRescale();
 			}
 		}

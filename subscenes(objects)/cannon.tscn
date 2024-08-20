@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://6kow8q6nbri5"]
+[gd_scene load_steps=9 format=3 uid="uid://6kow8q6nbri5"]
 
 [ext_resource type="Script" path="res://scripts/Cannon.cs" id="1_20ywb"]
 [ext_resource type="Texture2D" uid="uid://cur3mq62rd6et" path="res://sprites/CannonTube_spritesheet.png" id="2_rrpge"]
 [ext_resource type="Script" path="res://scripts/CannonAnimator.cs" id="3_126qa"]
 [ext_resource type="Texture2D" uid="uid://eq1yyec3d8w5" path="res://sprites/CannonStand.png" id="4_tglkr"]
+[ext_resource type="AudioStream" uid="uid://dqtsu5gxwd4lb" path="res://audio/explosion.wav" id="5_moe30"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s45vg"]
 
@@ -61,5 +62,9 @@ autostart = true
 [node name="Sprite2D2" type="Sprite2D" parent="CollisionShape2D"]
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("4_tglkr")
+
+[node name="FiringSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_moe30")
+volume_db = -20.0
 
 [connection signal="body_entered" from="." to="." method="OnCollisionEnter"]

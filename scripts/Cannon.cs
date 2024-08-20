@@ -5,12 +5,14 @@ public partial class Cannon : Rescaler
 {
 	Timer timer;
 	PackedScene rocket;
+	AudioStreamPlayer2D firingSFX;
 	bool shoot;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		timer = GetNode<Timer>("CollisionShape2D/Sprite2D/Timer");
 		rocket = GD.Load<PackedScene>("res://subscenes(objects)/rocket.tscn");
+		firingSFX = GetNode<AudioStreamPlayer2D>("FiringSFX");
 		base._Ready();
 	}
 
@@ -34,6 +36,7 @@ public partial class Cannon : Rescaler
 	void TimerTriggerSingleton(){
 		if(timer.TimeLeft <= 0.01){
 			shoot = true;
+			firingSFX.Playing = true;
 		}
 	}
 
@@ -44,7 +47,7 @@ public partial class Cannon : Rescaler
 		}
 		Rocket rocketInstance = (Rocket)rocket.Instantiate();
 		rocketInstance.Position = this.GlobalPosition;
-		rocketInstance.SetScales(new(2, 2), new(4, 4));
+		rocketInstance.SetScales(this.newScale/2, this.originalScale/2);
 		rocketInstance.step = 1;
 		GetParent().AddChild(rocketInstance);
 

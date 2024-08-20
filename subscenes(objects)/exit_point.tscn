@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://hx3owedngy2"]
+[gd_scene load_steps=5 format=3 uid="uid://hx3owedngy2"]
 
 [ext_resource type="Script" path="res://scripts/ExitPoint.cs" id="1_egkml"]
 [ext_resource type="Texture2D" uid="uid://eq1yyec3d8w5" path="res://sprites/CannonStand.png" id="2_wejjx"]
+[ext_resource type="AudioStream" uid="uid://c1ah3kpsyfj0u" path="res://audio/coin.wav" id="3_rjwr3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wyx3o"]
 
@@ -21,5 +22,8 @@ texture = ExtResource("2_wejjx")
 [node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
 modulate = Color(0, 0, 0, 1)
 texture = ExtResource("2_wejjx")
+
+[node name="scoreSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_rjwr3")
 
 [connection signal="body_entered" from="." to="." method="OnBodyEntered"]
