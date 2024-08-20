@@ -49,7 +49,7 @@ public partial class Cannon : Rescaler
 		rocketInstance.Position = this.GlobalPosition;
 		rocketInstance.SetDirection(new Vector2(this.originalScale.X, 0).Normalized());
 		rocketInstance.SetScales(this.originalScale/2, this.newScale/2);
-		rocketInstance.step = 1;
+		rocketInstance.step = 3;
 		GetParent().AddChild(rocketInstance);
 
 		GD.Print("rocket launched!");

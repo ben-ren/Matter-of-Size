@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://hi4kpj0luc3j"]
+[gd_scene load_steps=5 format=3 uid="uid://hi4kpj0luc3j"]
 
 [ext_resource type="Script" path="res://scripts/MainMenu.cs" id="1_deyrw"]
 [ext_resource type="PackedScene" uid="uid://bnc34kag5fopt" path="res://scenes/options_menu.tscn" id="2_42y6w"]
+[ext_resource type="Texture2D" uid="uid://42roh5o1ikbv" path="res://gmtk2024-logo.png" id="3_020v8"]
+[ext_resource type="Texture2D" uid="uid://bjk4atos60ffk" path="res://Matter_of_size_logo.png" id="4_54rvy"]
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("options", "credits")]
 layout_mode = 3
@@ -11,6 +13,15 @@ offset_bottom = 40.0
 script = ExtResource("1_deyrw")
 options = NodePath("OptionsMenu")
 credits = NodePath("RichTextLabel")
+
+[node name="Title" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.690196)
+z_index = -10
+layout_mode = 0
+offset_right = 1000.0
+offset_bottom = 500.0
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("4_54rvy")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
@@ -49,6 +60,9 @@ offset_left = 510.0
 offset_top = 23.0
 offset_right = 1253.0
 offset_bottom = 191.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 0
+theme_override_constants/outline_size = 10
 theme_override_font_sizes/normal_font_size = 20
 text = "- Game music used; \"Blippy Trance\" Kevin MacLeod 
 (incompetech.com)
@@ -67,8 +81,8 @@ https://sfxr.me/
 
 - Made in Godot
 
-- Thank you to Mark Brown for this opportunity to destroy my 
-sleep schedule"
+- Thank you to Mark Brown for this opportunity 
+... and the Game Jam Logo"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
@@ -79,6 +93,8 @@ offset_left = 75.0
 offset_top = 394.0
 offset_right = 281.0
 offset_bottom = 463.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
 theme_override_font_sizes/normal_font_size = 50
 text = "Controls"
 fit_content = true
@@ -91,6 +107,8 @@ offset_left = 63.0
 offset_top = 466.0
 offset_right = 307.0
 offset_bottom = 558.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
 theme_override_font_sizes/normal_font_size = 25
 text = "Grow/Shrink Objects - Left Click
 Movement - WASD/Arrow keys
@@ -98,6 +116,15 @@ Jump - Spacebar
 Pause Game - Escape [ESC]"
 fit_content = true
 autowrap_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 958.0
+offset_top = 541.0
+offset_right = 2878.0
+offset_bottom = 1594.0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_020v8")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
