@@ -1,7 +1,6 @@
 using Godot;
 using System;
 
-
 public partial class CharacterController : CharacterBody2D
 {
 	[Export] public float Speed = 300.0f;
@@ -40,12 +39,12 @@ public partial class CharacterController : CharacterBody2D
 			velocity.Y += gravity * (float)delta;
 
 		// Handle Jump.
-		if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
+		if (Input.IsActionJustPressed("jump") && IsOnFloor())
 			velocity.Y = JumpVelocity;
 
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.
-		direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
+		direction = Input.GetVector("move_left", "move_right", "move_up", "move_down");
 		if (direction != Vector2.Zero)
 		{
 			velocity.X = direction.X * Speed;

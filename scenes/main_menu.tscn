@@ -45,15 +45,58 @@ offset_bottom = 89.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 361.0
-offset_top = 12.0
-offset_right = 401.0
-offset_bottom = 52.0
+offset_left = 510.0
+offset_top = 23.0
+offset_right = 1253.0
+offset_bottom = 191.0
 theme_override_font_sizes/normal_font_size = 20
-text = "- Text test continuing
-- other test"
+text = "- Game music used; \"Blippy Trance\" Kevin MacLeod 
+(incompetech.com)
+Licensed under Creative Commons: By Attribution 4.0 License
+http://creativecommons.org/licenses/by/4.0/
+
+- SFX; created using jsfxr by DrPetter & Eric Fredricksen
+based on original system by Chris McCormick
+https://sfxr.me/
+
+- Art & Animation - Neb_nub (Me)
+
+- Code - Neb_nub (Also Me)
+
+- Level Design - Neb_nub (Unfortunately also Me)
+
+- Made in Godot
+
+- Thank you to Mark Brown for this opportunity to destroy my 
+sleep schedule"
 fit_content = true
 scroll_active = false
+autowrap_mode = 0
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 394.0
+offset_right = 281.0
+offset_bottom = 463.0
+theme_override_font_sizes/normal_font_size = 50
+text = "Controls"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 466.0
+offset_right = 307.0
+offset_bottom = 558.0
+theme_override_font_sizes/normal_font_size = 25
+text = "Grow/Shrink Objects - Left Click
+Movement - WASD/Arrow keys
+Jump - Spacebar
+Pause Game - Escape [ESC]"
+fit_content = true
 autowrap_mode = 0
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
